@@ -1,0 +1,68 @@
+﻿
+@model IEnumerable<mamibags.Models.tbl_Products>
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="hero_area">
+    <h2>Admin - Product Management</h2>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+
+    <!-- Link to create a new product -->
+    @Html.ActionLink("Create New Product", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("View Orders", "ViewOrders", null, new { @class = "btn btn-primary" })
+
+    <br />
+    <table class="table table-bordered mt-2">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.First().ProductID)</th>
+                <th>@Html.DisplayNameFor(model => model.Pname)</th>
+                <th>@Html.DisplayNameFor(model => model.Size)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.Price)</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => product.ProductID)</td>
+                    <td>@Html.DisplayFor(model => product.Pname)</td>
+                    <td>@Html.DisplayFor(model => product.Size)</td>
+                    <td>@Html.DisplayFor(model => product.Description)</td>
+                    <td>@Html.DisplayFor(model => product.Price)</td>
+
+                    <td>
+                        @if (!string.IsNullOrEmpty(product.ImagePath))
+                        {
+                            <img src="~/Content/Image/@product.ImagePath" alt="@product.Pname" width="70" height="60" />
+                        }
+                        else
+                        {
+                            <span>No image</span> <!-- Default message if no image -->
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Details", "Products", new { id = product.ProductID })" class="btn btn-info">Details</a>
+                        <a href="@Url.Action("Edit", "Products", new { id = product.ProductID })" class="btn btn-warning">Edit</a>
+                        <a href="@Url.Action("Delete", "Products", new { id = product.ProductID })" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+

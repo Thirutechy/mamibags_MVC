@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+</style>
+@if (ViewBag.ErrorMessage != null)  
+{
+    <div class="alert alert-danger hero_area" role="alert">
+        @ViewBag.ErrorMessage  
+    </div>
+}
+<div class="flex-center ">
+    <div class="card mt-3" style="width: 35rem;">
+        <div class="card-header">
+            <h2>Login</h2>  <!-- Card header for product details -->
+        </div>
+        @using (Html.BeginForm())
+        {
+            <form onsubmit="return validateLogin()">
+                <div class="card-body">
+                    <div>
+                        <label for="Username" style="font-weight:bold">Name:</label>
+                        @Html.TextBox("name", null, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        <label for="Password" style="font-weight:bold">Mobile:</label>
+                        @Html.Password("mobile", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="col-5 ">
+                        <button type="submit" class="btn btn-primary" value="Login">Submit</button> |  <a href="">
+                            <span>
+                                @Html.ActionLink("Register", "Register", "Home")
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        }
+    </div>
+</div>
+
+
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+</script>
+<script src="js/custom.js"></script>
+

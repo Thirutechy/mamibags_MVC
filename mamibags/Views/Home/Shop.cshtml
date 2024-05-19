@@ -1,0 +1,60 @@
+﻿@model IEnumerable<mamibags.Models.tbl_Products>
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="shop_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                Latest Products
+            </h2>
+        </div>
+        <div class="row">
+            <!-- Bootstrap grid system -->
+
+            @foreach (var product in Model)
+            {
+                <div class="col-md-3 col-sm-6">
+                    <!-- Four columns per row on medium screens, six on small screens -->
+                    <div class="card">
+                        <!-- Bootstrap card component -->
+                        <div class="card-header">
+                            @Html.DisplayFor(model => product.Pname)  <!-- Product name in card header -->
+                        </div>
+
+                        <div class="card-body">
+                            <!-- Card body with product details -->
+                            @if (!string.IsNullOrEmpty(product.ImagePath))
+                            {
+                                <img src="~/Content/Image/@product.ImagePath" alt="@product.Pname" class="img-fluid" width="200" height="200" /> <!-- Display product image -->
+                            }
+                            else
+                            {
+                                <span>No image</span>
+                            }
+                        </div>
+
+                        <div class="card-footer">
+                            <!-- Card footer for action buttons -->
+
+                            <p class="card-text">@Html.DisplayFor(model => product.Description)</p>
+                            <p><strong>Size:</strong> @Html.DisplayFor(model => product.Size)</p>
+                            <p><strong>Price:</strong> @Html.DisplayFor(model => product.Price)</p>
+
+                            @Html.ActionLink("Order Now", "CreateOrder","Products", new { id = product.ProductID }, new { @class = "btn btn-warning" })
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    </section>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    </script>
+    <script src="js/custom.js"></script>
+

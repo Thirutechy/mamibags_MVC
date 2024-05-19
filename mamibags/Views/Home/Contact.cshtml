@@ -1,0 +1,100 @@
+﻿@model mamibags.Models.tbl_feedback
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .success-message {
+        position: fixed; /* Keep the box in a fixed position on the screen */
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, -50%); /* Adjust positioning for perfect centering */
+        /* Define specific height and width */
+        height: 192px; /* 2 inches in height */
+        width: 288px; /* 3 inches in length (width) */
+        /* Additional styling */
+        background-color: greenyellow; /* Green background for success */
+        color: black; /* White text for contrast */
+        padding: 30px 20px; /* Padding for spacing */
+        border-radius: 10px; /* Rounded corners */
+        border: 2px solid #000; /* Black border around the box */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        text-align: center; /* Center the text */
+        font-size: 30px; /* Adjust font size */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        z-index: 1000;
+    }
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+</style>
+
+@if (TempData["SuccessMessage"] != null)  
+{
+    <div class="success-message">
+        @TempData["SuccessMessage"]  
+    </div>
+
+    <script>
+        setTimeout(function() { 
+            window.location.href = "@Url.Action("Shop", "Home")";  
+        }, 4000); 
+    </script>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+
+
+<div class="flex-center ">
+    <v class="card mt-3" style="width: 35rem;">
+        <div class="card-header">
+            <h2>Feedback</h2>  <!-- Card header for product details -->
+        </div>
+        @using (Html.BeginForm("Contact", "Home", null, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="card-body">
+              @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Mobilenumber, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Mobilenumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Mobilenumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Message, new { @class = "form-control", rows = 5 })
+                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+             </div>
+
+                <div class="card-footer">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit" class="btn btn-success" /> |  @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
+         }
+    </div>

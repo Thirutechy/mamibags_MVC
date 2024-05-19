@@ -1,0 +1,213 @@
+﻿@model mamibags.Models.OrderProductViewModel
+
+@{
+    ViewBag.Title = "CreateOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .success-message {
+        position: fixed; /* Keep the box in a fixed position on the screen */
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, -50%); /* Adjust positioning for perfect centering */
+        /* Define specific height and width */
+        height: 192px; /* 2 inches in height */
+        width: 288px; /* 3 inches in length (width) */
+        /* Additional styling */
+        background-color:aqua; /* Green background for success */
+        color: black; /* White text for contrast */
+        padding: 30px 20px; /* Padding for spacing */
+        border-radius: 10px; /* Rounded corners */
+        border: 2px solid #000; /* Black border around the box */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        text-align: center; /* Center the text */
+        font-size: 30px; /* Adjust font size */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        z-index: 1000;
+    }
+
+    .text-outline {
+        text-shadow: -2px -2px 0 #052330, /* Top-left outline */
+        2px -2px 0 #052330, /* Top-right outline */
+        -2px 2px 0 #052330, /* Bottom-left outline */
+        2px 2px 0 #052330; /* Bottom-right outline */
+        text-align: center;
+        margin-top: 3px;
+    }
+</style>
+
+<h2 class="text-outline" style="color:chartreuse;">Confirm Order</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="success-message">
+        @TempData["SuccessMessage"]
+    </div>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "@Url.Action("Index", "Home")";
+        }, 4000);
+    </script>
+}
+
+@using (Html.BeginForm("CreateOrder", "Products", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-5">
+            @*<div>*@
+            <div class="card mt-3 ml-5" style="width: 35rem;">
+                <div class="form-group mt-2" style="margin-left: 50px; margin-right:auto;">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Orders.ProductID, new { @style = "font-weight: bold;" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Orders.ProductID, new { htmlAttributes = new { @class = "form-control", style = "width: 300px;" } })
+                            @Html.ValidationMessageFor(model => model.Orders.ProductID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Orders.OrderDate, new { @style = "font-weight: bold;" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Orders.OrderDate, new { htmlAttributes = new { @class = "form-control", style = "width: 300px;" } })
+                            @Html.ValidationMessageFor(model => model.Orders.OrderDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Orders.Quantity, new { @style = "font-weight: bold;" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Orders.Quantity, new { htmlAttributes = new { @class = "form-control", style = "width: 300px;" } })
+                            @Html.ValidationMessageFor(model => model.Orders.Quantity, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Orders.CustomerName, new { @style = "font-weight: bold;" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Orders.CustomerName, new { htmlAttributes = new { @class = "form-control", style = "width: 300px;" } })
+                            @Html.ValidationMessageFor(model => model.Orders.CustomerName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Orders.CustomerMobile, new { @style = "font-weight: bold;" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Orders.CustomerMobile, new { htmlAttributes = new { @class = "form-control", style = "width: 300px;" } })
+                            @Html.ValidationMessageFor(model => model.Orders.CustomerMobile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Orders.Address, new { @style = "font-weight: bold;" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Orders.Address, new { htmlAttributes = new { @class = "form-control", style = "width: 300px;" } })
+                            @Html.ValidationMessageFor(model => model.Orders.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-5">
+            <div class="card mt-3 ml-5" style="width: 35rem;">
+                <div class="card-header">
+                    <h2>Product Details</h2>  <!-- Card header for product details -->
+                </div>
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.Error
+                    </div>
+                }
+                @if (Model != null)
+                {
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <dl class="card-text">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Products.ProductID)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Products.ProductID)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Products.Pname)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Products.Pname)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Products.Size)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Products.Size)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Products.Description)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Products.Description)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Products.Price)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Products.Price)
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-8">
+
+                                <div>
+                                    @if (!string.IsNullOrEmpty(Model.Products.ImagePath))
+                                    {
+                                        <img src="~/Content/Image/@Model.Products.ImagePath" alt="@Model.Products.Pname" width="200" height="200" /> // Correct reference
+                                    }
+                                    else
+                                    {
+                                        <p>No image available.</p>// Handle missing images
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                }
+                else
+                {
+                    <p>Product not found.</p>
+                }
+            </div>
+
+            <div class="card ml-5" style="width: 35rem;">
+                <div class="row mt-2 mb-2">
+                    <div class="col ml-5">
+                        @*@Html.ActionLink("Order", "Shop", null, htmlAttributes: new { @class = "btn btn-danger" })*@
+                        <input type="submit" value="CreateOrder" class="btn btn-success" />
+                    </div>
+                    <div class="col ml-5">
+                        @Html.ActionLink("Cancel", "Shop", "Home", new { area = "" }, htmlAttributes: new { @class = "btn btn-danger" })
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+<div>
+
+</div>

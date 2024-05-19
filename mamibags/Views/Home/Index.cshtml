@@ -1,0 +1,188 @@
+﻿@model IEnumerable<mamibags.Models.tbl_Products>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="hero_area">
+    <section class="slider_section">
+        <div class="slider_container">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="detail-box">
+                                        <h1>
+                                            Welcome To Our <br>
+                                            Bag Shop
+                                        </h1>
+                                        <p>
+                                            Welcome to mamibags, your go-to destination for high-quality bags that blend style and functionality. Our journey began with a                 simple idea: to create bags that meet the demands of modern life while expressing your unique personality.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="shop_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                Latest Products
+            </h2>
+        </div>
+        <div class="row">
+           
+            <div class="card">
+                <div class="card-header">
+                    Products
+                </div>
+                <div class="card-body">
+                    <div class=" row">
+                        <div class="col-4">
+                            <img src="~/images/bags1.jpeg" width="200" height="200" style="margin-left:60px"/>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/bags2.jpeg" width="200" height="200" style="margin-left:70px" />
+
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/bags3.jpeg" width="200" height="200" style="margin-left:100px" />
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="btn-box">
+            @Html.ActionLink("View All Products","Shop") 
+        </div>
+    </div>
+</section>
+<section class="saving_section ">
+    <div class="box">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="img-box">
+                        <img src="~/images/saving-img.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h2>
+                                Best Savings on <br>
+                                new arrivals
+                            </h2>
+                        </div>
+                        <p>
+                            Exciting news! We're thrilled to introduce our latest collection of Bags at unbeatable prices. Now's your chance to get your hands on the hottest new arrivals and enjoy incredible savings.
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end saving section -->
+<!-- why section -->
+
+<section class="why_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                Why Shop With Us
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box ">
+                    <div class="detail-box">
+                        <h5>
+                            Fast Delivery
+                        </h5>
+                        <p>
+                            "Speedy delivery, right to your door!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box ">
+                    <div class="detail-box">
+                        <h5>
+                            Free Shiping
+                        </h5>
+                        <p>
+                            "Free shipping on all orders!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box ">
+                    <div class="detail-box">
+                        <h5>
+                            Best Quality
+                        </h5>
+                        <p>
+                            "Quality you can trust!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end why section -->
+<!-- gift section -->
+
+<section class="gift_section layout_padding-bottom">
+    <div class="box ">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="img_container">
+                        <div class="img-box">
+                            <img src="~/images/gifts.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h2>
+                                Gifts for your <br>
+                                loved ones
+                            </h2>
+                        </div>
+                        <p>
+                            These deals won't last long, so hurry in and shop today. Whether you're updating your look, finding the perfect gift, or just treating yourself, you'll find amazing savings on the items you love.
+                        </p>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end gift section -->
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+</script>
+<script src="js/custom.js"></script>

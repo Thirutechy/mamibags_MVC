@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/responsive.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+    <link href="~/fonts/octin_sports_rg.ttf" />
+    <link href="~/fonts/fontawesome-webfont.ttf" />
+    <link href="~/fonts/fontawesome-webfont.woff" />
+    <link href="~/fonts/fontawesome-webfont.woff2" />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="index.html">
+                    <span>
+                        mamibags
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=""></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav  ">
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Shop", "Shop", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Why", "Why", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li> @Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+   
+        <div>
+            @RenderBody()
+            <hr />
+            
+                <!-- info section -->
+
+                <section class="info_section  layout_padding2-top">
+                    <div class="social_container">
+                        <div class="social_box">
+                            <a href="">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-youtube" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="info_container ">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-8">
+                                    <h6>
+                                        ABOUT US
+                                    </h6>
+                                    <p>
+                                        Customer satisfaction is our top priority. Our dedicated team is here to help you find the perfect bag and provide exceptional customer service every step of the way. We value your feedback and are always looking for ways to improve and innovate.
+                                    </p>
+                                </div>
+
+                                <div class="col-md-6 col-lg-4">
+                                    <h6>
+                                        CONTACT US
+                                    </h6>
+                                    <div class="info_link-box">
+                                        <a href="">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            <span> Coimbatore </span>
+                                        </a>
+                                        <a href="">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                            <span>9095876709</span>
+                                        </a>
+                                        <a href="">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            <span> mamibags@gmail.com</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer section -->
+                    <footer class=" footer_section">
+                        <div class="container">
+                            <p>
+                                &copy; <span id="displayYear"></span> All Rights Reserved By
+                                <a href="#">mamibags</a>
+                            </p>
+                        </div>
+                    </footer>
+                    <!-- footer section -->
+
+                </section>
+
+                <!-- end info section -->
+           
+        </div>
+
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+        <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/custom.js"></script>
+        <script src="~/js/jquery-3.4.1.min.js"></script>
+</body>
+</html>
